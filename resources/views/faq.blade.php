@@ -42,7 +42,7 @@
         </div>
     </div>
     <br>
-    If our FAQ-page does not answer one of your questions, please go to <a href="https://stellarsecurity.com/contact-us">Contact us</a> page.
+    If our FAQ-page does not answer one of your questions, please go to <a href="https://stellarsecurity.com/contact-us">Contact us</a> page for additional support.
 
 </div>
 
