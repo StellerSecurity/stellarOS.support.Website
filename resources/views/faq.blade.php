@@ -8,7 +8,7 @@
         @foreach ($items as $item)
         <div class="accordion-item">
             <h2 class="accordion-header" id="heading{{ $item['id'] }}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $item['id'] }}" aria-expanded="true" aria-controls="collapse{{ $item['id'] }}">
+                <button class="accordion-button" onclick="updateUrl({{ $item['id'] }})" id="c{{ $item['id'] }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $item['id'] }}" aria-expanded="true" aria-controls="collapse{{ $item['id'] }}">
                     {{ $item['title'] }}
                 </button>
             </h2>
@@ -26,4 +26,29 @@
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+<script>
+$( document ).ready(function() {
+
+    let searchParams = new URLSearchParams(window.location.search)
+    let param = searchParams.get('faq')
+    console.log(param);
+
+    $("#c" + param).click();
+
+    const scrollToEl = $("#c" + param);
+    $('html').animate(
+        {
+            scrollTop: scrollToEl.offset().top,
+        },
+        800 //speed
+    );
+});
+
+function updateUrl(faq) {
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?faq=' + faq;
+    window.history.pushState({path:newurl},'',newurl);
+}
+</script>
